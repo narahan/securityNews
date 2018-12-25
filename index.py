@@ -30,14 +30,13 @@ print('==============================================')
 #print(divs)
 
 
-# get title list
+# get title, url list
 for i in divs:
-	titleArr = i.find_all('span', {'class': 'news_txt'})
-	#print(titleArr)
+	#titleArr = i.find_all('span', {'class': 'news_txt'})
+	titleArr = i.find_all('span')[0]
+	print(titleArr.string)
 
-# get href lis
-for j in divs:
-	aa = j.find('a')['href']
-	print(base_url + aa)
-
+	urlArr = i.find('a')['href']
+	print(base_url + urlArr)
+	
 
