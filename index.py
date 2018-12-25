@@ -10,6 +10,9 @@ url = 'https://www.boannews.com/media/list.asp?mkind=1'
 f = urlopen(url)
 b = f.read()
 soup = bss(b, 'html.parser')
-divs = soup.find_all('news_main_title')
+divs = soup.find_all('div',{'class': 'news_main_title'})
+
+
 print('==============================================')
-print(soup)
+
+print(divs)
