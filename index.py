@@ -3,6 +3,9 @@
 
 from urllib.request import urlopen
 from bs4 import BeautifulSoup as bss
+
+# 모든 https 통신은 필요한 인증서와 호스트명을 기본적으로 체크하게 됨
+# 영향 받는 라이브러리는 urllib, urllib2, http, httplib
 import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
 
