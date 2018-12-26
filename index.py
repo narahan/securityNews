@@ -1,8 +1,8 @@
 
+
+
 from urllib.request import urlopen
 from bs4 import BeautifulSoup as bss
- 
-
 import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
 
@@ -22,17 +22,11 @@ divs = soup.find_all('div',{'class': 'news_list'})
 print('==============================================')
 
 
-try:
-	# get title, url list
-	for i in divs:
-		#titleArr = i.find_all('span', {'class': 'news_txt'})
-		titleArr = i.find_all('span')[0]
-		print(titleArr.string)
+# get title, url list
+for i in divs:
+	#titleArr = i.find_all('span', {'class': 'news_txt'})
+	titleArr = i.find_all('span')[0]
+	print(titleArr.string)
 
-		urlArr = i.find('a')['href']
-		print(base_url + urlArr)
-# test	
-except urllib.error.HTTPError as e:
-	print(e.code)
-	print(e.reason)
-	print(e.headers)
+	urlArr = i.find('a')['href']
+	print(base_url + urlArr)
