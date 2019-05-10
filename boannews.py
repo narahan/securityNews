@@ -26,7 +26,7 @@ soup = bss(b, 'html.parser')
 con = connect('news.db')
 cur = con.cursor()
 
-table = 'create table boannews(title text, url text);'
+table = 'create table boannews(boannews text, title text, url text);'
 cur.execute(table)
 
 
@@ -40,10 +40,12 @@ for i in divs:
 
 	urlArr = i.find('a')['href']
 	urlArr = base_url + urlArr
+	companyText = 'boannews'
 
-	t = (titleArr, urlArr)
-	cur.execute('insert into boannews values (?,?)', t)
+	t = (companyText, titleArr, urlArr)
+	cur.execute('insert into boannews values (?,?,?)', t)
 	print(t)
 
 con.commit()
 con.close()
+
