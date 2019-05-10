@@ -41,7 +41,7 @@ for i in divs:
 	urlArr = i.find('a')['href']
 	urlArr = base_url + urlArr
 
-	t = (companyText, titleArr, urlArr)
+	t = (titleArr, urlArr)
 	cur.execute('insert into boannews values (?,?)', t)
 	print(t)
 
