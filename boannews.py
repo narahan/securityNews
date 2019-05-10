@@ -30,7 +30,7 @@ table = 'create table boannews(boannews text, title text, url text);'
 cur.execute(table)
 
 
-divs = soup.find_all('div',{'class': 'news_list'})
+divs = soup.find_all('div', { 'class': 'news_list' })
 
 # get title, url list
 for i in divs:
