@@ -1,0 +1,12 @@
+
+{% block body %}
+	<div class="list">
+		{% for article in articles %}
+			<div class="list" id="id">{{article.id}}</div>
+			<div class="list" id="title">{{article.title}}</div>
+			<div class="list" id="name">{{article.name}}</div>
+		{% endfor %}
+	</div>
+	
+		
+{% endblock %}
