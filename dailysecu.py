@@ -13,13 +13,13 @@ ssl._create_default_https_context = ssl._create_unverified_context
 # Boannews Base URL
 base_url ='https://www.dailysecu.com'
 url = base_url + '/?mod=news&act=articleList&view_type=S&sc_code=1435901200'
+
 # url open 
 f = urlopen(url)
 
 # page read
 b = f.read()
 soup = bss(b, 'html.parser')
-
 
 
 
