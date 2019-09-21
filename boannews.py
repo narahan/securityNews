@@ -23,11 +23,11 @@ b = f.read()
 soup = bss(b, 'html.parser')
 
 
-con = connect('news.db')
-cur = con.cursor()
+# con = connect('news.db')
+# cur = con.cursor()
 
-table = 'create table boannews(title text, url text);'
-cur.execute(table)
+# table = 'create table boannews(title text, url text);'
+# cur.execute(table)
 
 
 divs = soup.find_all('div', { 'class': 'news_list' })
@@ -42,9 +42,9 @@ for i in divs:
 	urlArr = base_url + urlArr
 
 	t = (titleArr, urlArr)
-	cur.execute('insert into boannews values (?,?)', t)
+	# cur.execute('insert into boannews values (?,?)', t)
 	print(t)
 
-con.commit()
-con.close()
+# con.commit()
+# con.close()
 
