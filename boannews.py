@@ -68,9 +68,5 @@ def getData():
 
 
 
-# for i in divs:
-# 	num = num + 1
-# 	print(num)
-
 
 
