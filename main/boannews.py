@@ -2,9 +2,6 @@
 
 from urllib.request import urlopen
 from bs4 import BeautifulSoup as bss
-import json
-import os
-from collections import OrderedDict
  
 
 
@@ -35,7 +32,7 @@ divs = soup.find_all('div', { 'class': 'news_list' })
 file_data = []
 
 
-def getData():
+def getBoanData():
 	num = 0
 	for i in divs:
 		f = {}

@@ -18,10 +18,16 @@ if(!window['News']){
 			// _O.Html.set();
 			// _O.Data.set();
 		};
+		_O.Ajax = function(o){
+			
+			$.getJSON('/', 
+				function(data){
+					// console.log('data::::', data)		
+				});
+			return false;
+		}
 		_O.Vars = {
-			start: null,
-			point:0,
-			slide_flag:0//중복 방지
+			flag: 1
 		};
 		_O.Ctrl = {
 			set: function(){
@@ -76,7 +82,7 @@ if(!window['News']){
 			 * @param {object} o 오브젝트
 			 */
 			setObjAddEvent: function(o){
-				console.log('object:::', o);
+				// console.log('object:::', o);
 				var length = o.length;
 				if(length > 1){
 					for(var i=0; i<length; i++){
@@ -129,7 +135,7 @@ if(!window['News']){
 			 * @param {object} o: 오브젝트, {object} e:이벤트
 			 */
 			onClick: function(o, e){
-				console.log('On Click!!!', o)
+				// console.log('On Click!!!', o)
 				e = e || window.event;
 				if(e.stopPropagation){
 					e.stopPropagation();
@@ -144,7 +150,7 @@ if(!window['News']){
 					
 					// 클릭한 탭이 현재 열려있는 탭일때
 					if(sel == 'on') {
-						console.log('true');
+						// console.log('true');
 					}else{
 						$('.tab[sel="on"]').attr('sel', 'off');
 					
@@ -154,6 +160,7 @@ if(!window['News']){
 							o.attr('sel', 'on');	
 						}	
 					}
+					_O.Ajax(o);
 
 					
 				}
