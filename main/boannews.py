@@ -1,9 +1,7 @@
 
-
+import sqlite3
 from urllib.request import urlopen
 from bs4 import BeautifulSoup as bss
- 
-
 
 
 # 모든 https 통신은 필요한 인증서와 호스트명을 기본적으로 체크하게 됨
@@ -26,41 +24,41 @@ soup = bss(b, 'html.parser')
 
 
 
+
 divs = soup.find_all('div', { 'class': 'news_list' })
 
 
 file_data = []
-
-
 def getBoanData():
 	num = 0
 	for i in divs:
+
 		f = {}
+		title = i.find_all('span', {'class': 'news_txt'})
+		title = i.find_all('span')[0]
+		title = title.string
 
-		titleArr = i.find_all('span', {'class': 'news_txt'})
-		titleArr = i.find_all('span')[0]
-		titleArr = titleArr.string
+		url = i.find('a')['href']
+		url = base_url + url
 
-		urlArr = i.find('a')['href']
-		urlArr = base_url + urlArr
-
-		dateArr = i.find_all('span', {'class': 'news_writer'})
+		date = i.find_all('span', {'class': 'news_writer'})
 		# ex) <span class="news_writer">권준  기자 | 2019.08.12 12:02</span>
 
-		dateArr = i.find_all('span')[1]
+		date = i.find_all('span')[1]
 		# ex) 2019.08.12 12:02
-		dateArr = dateArr.string.partition('|')[2]
+		date = date.string.partition('|')[2]
 		# ex) 2019.08.12
-		dateArr = dateArr.split(' ')[1]
+		date = date.split(' ')[1]
 
 		num = num + 1
 		f['num'] = num
-		f['date'] = dateArr
-		f['title'] = titleArr
-		f['url'] = urlArr
+		f['date'] = date
+		f['title'] = title
+		f['url'] = url
+		
 
 		file_data.append(f)
-
+		
 	return file_data
 
 

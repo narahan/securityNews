@@ -9,22 +9,17 @@ if(!window['News']){
 			$(function(){
 				$('.t_body').mCustomScrollbar({
 					theme: 'minimal-dark'
-			});
+				});
 
-		})
+			})
 			_O.Event.set();
 
 			// _O.Ctrl.set();
 			// _O.Html.set();
 			// _O.Data.set();
 		};
-		_O.Ajax = function(o){
-			
-			$.getJSON('/', 
-				function(data){
-					// console.log('data::::', data)		
-				});
-			return false;
+		_O.Ajax = function(type){
+			console.log('ooo::::', type)
 		}
 		_O.Vars = {
 			flag: 1
@@ -160,7 +155,7 @@ if(!window['News']){
 							o.attr('sel', 'on');	
 						}	
 					}
-					_O.Ajax(o);
+					_O.Ajax(type);
 
 					
 				}

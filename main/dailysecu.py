@@ -36,27 +36,27 @@ def getDailyData():
 
 
 		f = {}
-		titleArr = i.find('div', {'class' : 'list-titles'})
-		titleArr = titleArr.string
+		title = i.find('div', {'class' : 'list-titles'})
+		title = title.string
 		
 
-		urlArr = i.find('a')['href']
-		urlArr = base_url + urlArr
+		url = i.find('a')['href']
+		url = base_url + url
 
 		# ex) <span class="list-dated">이슈 | 길민권  기자 | 2019.08.12 12:02</span>
-		dateArr = i.find_all('div', {'class': 'list-dated'})[0]
-		dateArr = dateArr.string
-		dateArr = dateArr.string.partition('|')[2]
-		dateArr = dateArr.partition('|')[2]
+		date = i.find_all('div', {'class': 'list-dated'})[0]
+		date = date.string
+		date = date.string.partition('|')[2]
+		date = date.partition('|')[2]
 		# ex) 2019.08.12 12:02
-		dateArr = dateArr.split(' ')[1]
+		date = date.split(' ')[1]
 
 		
 		num = num + 1
 		f['num'] = num 
-		f['date'] = dateArr
-		f['title'] = titleArr
-		f['url'] = urlArr
+		f['date'] = date
+		f['title'] = title
+		f['url'] = url
 
 		file_data.append(f)
 	return file_data
