@@ -11,7 +11,8 @@ ssl._create_default_https_context = ssl._create_unverified_context
 
 
 # Boannews Base URL
-base_url ='https://www.boannews.com/media/list.asp?mkind=1'
+base_url = 'https://www.boannews.com/'
+base_url2 = base_url + 'media/list.asp?mkind=1'
 	   # ='https://www.boannews.com/media/list.asp?mkind=1'
 # https://www.boannews.com/media/view.asp?idx=85674
 
@@ -22,7 +23,7 @@ base_url ='https://www.boannews.com/media/list.asp?mkind=1'
 
 
 
-f = urlopen(base_url)
+f = urlopen(base_url2)
 b = f.read()
 soup = bss(b, 'html.parser')
 
@@ -40,7 +41,36 @@ divs = soup.find_all('div', {'class' : 'news_list'})
 
 
 
-print()
+
+file_data = []
+def getBoanData():
+	num = 0
+	for i in divs:
+		f = {}
+		# title = i.find_all('span', {'class' : 'news_txt'})
+		title = i.find_all('span')[0]
+		title = title.string
+
+		# /media/view.asp?idx=85672&page=1&mkind=1&kind=2
+		url = i.find('a')['href']
+
+		url = base_url + url
+
+		num = num + 1
+
+		f['num'] = num
+		# f['date'] = date
+		f['title'] = title
+		f['url'] = url
+		print(f)
+
+
+
+getBoanData()
+
+
+
+
 # file_data = []
 # def getBoanData():
 # 	num = 0
