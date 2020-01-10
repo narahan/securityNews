@@ -57,14 +57,16 @@ def getBoanData():
 		url = base_url + url
 
 		num = num + 1
-
+        
+#         뉴스 작성 날짜 노출 결정하기
 		f['num'] = num
-		# f['date'] = date
 		f['title'] = title
 		f['url'] = url
-		print(f)
-
-
+		
+		file_data.append(f)
+		
+	return file_data
+    
 
 getBoanData()
 
